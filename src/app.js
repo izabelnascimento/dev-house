@@ -5,6 +5,7 @@ import express from 'express';
 import routes from './routes';
 import mongoose from 'mongoose';
 import path from 'path';
+import cors from 'cors';
 
 class App{
 
@@ -26,6 +27,8 @@ class App{
             express.static(path.resolve(__dirname, '..', 'uploads'))
         );
         this.server.use(express.json());
+        //liberando qualquer pessoa usar essa api
+        this.server.use(cors());
     }
 
     routes(){
